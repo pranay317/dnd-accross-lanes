@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SwimLaneService, Lane } from '../../services/swim-lane.service';
+import { SwimLaneService, Lane, LaneCard } from '../../services/swim-lane.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DraggableDto } from '../card/card.component';
 import { SortEvent } from '../../directives/sortable.directive';
@@ -13,31 +13,31 @@ export class SwimLaneComponent implements OnInit {
   @Input() lane: Lane;
   @Output() reloadLanes: EventEmitter<Lane[]> = new EventEmitter<Lane[]>();
 
-  form: FormGroup;
+  // form: FormGroup;
 
   isAddingCard = false;
 
   constructor(
     private swimLaneService: SwimLaneService,
-    private _fb: FormBuilder
+    // private _fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    this.form = this._fb.group({
-      display: ['', Validators.required],
-      description: ''
-    });
+    // this.form = this._fb.group({
+    //   display: ['', Validators.required],
+    //   description: ''
+    // });
   }
 
-  toggleAddCard() {
-    this.isAddingCard = !this.isAddingCard;
+  toggleAddCard(val?) {
+    this.isAddingCard = val ? !val : !this.isAddingCard;
   }
 
-  addCard() {
-    this.swimLaneService.addCard(this.lane.name, this.form.value).subscribe(cards => {
+  addCard(laneCard: LaneCard) {
+    this.swimLaneService.addCard(this.lane.name, laneCard).subscribe(cards => {
       this.lane.cards = cards;
       this.toggleAddCard();
-      this.form.reset();
+      // this.form.reset();
     });
   }
 

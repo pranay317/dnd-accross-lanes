@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="submit($event)">
+  <input type="hidden" formControlName="name"/>
+  <input class="form-control mb-15" placeholder="Title..." type="text" formControlName="display" required/>
+  <textarea class="form-control mb-15" placeholder="Description..." formControlName="description"></textarea>
+  <div class="row">
+    <div class="col-6">
+      <button [disabled]="!this.form.valid" type="submit" class="btn btn-primary btn-block">{{isEdit ? 'Save' : 'Add'}}</button>
+    </div>
+    <div class="col-6">
+      <button (click)="toggleAddCard($event)" class="btn btn-secondary btn-block">Cancel</button>
+    </div>
+  </div>
+</form>

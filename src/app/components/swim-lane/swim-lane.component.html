@@ -6,20 +6,9 @@
     </div>
   </div>
   <div *ngIf="isAddingCard" class="add-item-form">
-    <form [formGroup]="form" (ngSubmit)="addCard($event)">
-      <input class="form-control mb-15" placeholder="Title..." type="text" formControlName="display" required/>
-      <textarea class="form-control mb-15" placeholder="Description..." formControlName="description"></textarea>
-      <div class="row">
-        <div class="col-6">
-          <button [disabled]="!this.form.valid" type="submit" class="btn btn-primary btn-block">Add</button>
-        </div>
-        <div class="col-6">
-          <button (click)="toggleAddCard($event)" class="btn btn-secondary btn-block">Cancel</button>
-        </div>
-      </div>
-    </form>
+    <app-edit-task (toggleFormView)="toggleAddCard($event)" (addFormSubmit)="addCard($event)"></app-edit-task>
   </div>
   <div *ngIf="!isAddingCard">
-    <button (click)="toggleAddCard($event)" class="btn btn-secondary btn-block">Add Card</button>
+    <button (click)="toggleAddCard()" class="btn btn-secondary btn-block">Add Card</button>
   </div>
 </div>

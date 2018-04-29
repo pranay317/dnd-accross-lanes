@@ -11,6 +11,7 @@ import { CardComponent } from './components/card/card.component';
 import { DraggableDirective } from './directives/draggable.directive';
 import { DroppableDirective } from './directives/droppable.directive';
 import { SortableDirective } from './directives/sortable.directive';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SortableDirective } from './directives/sortable.directive';
     DraggableDirective,
     DroppableDirective,
     SortableDirective,
+    EditTaskComponent,
   ],
   imports: [
     BrowserModule,
