@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SwimLaneService, Lane } from '../../services/swim-lane.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DraggableDto } from '../card/card.component';
+import { SortEvent } from '../../directives/sortable.directive';
 
 @Component({
   selector: 'app-swim-lane',
@@ -49,6 +50,13 @@ export class SwimLaneComponent implements OnInit {
   removeCard(data: DraggableDto) {
     this.swimLaneService.deleteCard(data.card, data.fromLane).subscribe(cards => {
       this.lane.cards = cards;
+    });
+  }
+
+  sort(event: SortEvent) {
+    const card = this.lane.cards[event.currentIndex];
+    this.swimLaneService.swapCard(card, this.lane.name, this.lane.name, event.newIndex).subscribe(lanes => {
+      this.reloadLanes.emit(lanes);
     });
   }
 

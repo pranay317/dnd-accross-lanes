@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app.routes';
 import { CardComponent } from './components/card/card.component';
 import { DraggableDirective } from './directives/draggable.directive';
 import { DroppableDirective } from './directives/droppable.directive';
+import { SortableDirective } from './directives/sortable.directive';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { DroppableDirective } from './directives/droppable.directive';
     CardComponent,
     DraggableDirective,
     DroppableDirective,
+    SortableDirective,
   ],
   imports: [
     BrowserModule,
