@@ -13,20 +13,13 @@ export class SwimLaneComponent implements OnInit {
   @Input() lane: Lane;
   @Output() reloadLanes: EventEmitter<Lane[]> = new EventEmitter<Lane[]>();
 
-  // form: FormGroup;
-
   isAddingCard = false;
 
   constructor(
     private swimLaneService: SwimLaneService,
-    // private _fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    // this.form = this._fb.group({
-    //   display: ['', Validators.required],
-    //   description: ''
-    // });
   }
 
   toggleAddCard(val?) {
@@ -37,7 +30,6 @@ export class SwimLaneComponent implements OnInit {
     this.swimLaneService.addCard(this.lane.name, laneCard).subscribe(cards => {
       this.lane.cards = cards;
       this.toggleAddCard();
-      // this.form.reset();
     });
   }
 

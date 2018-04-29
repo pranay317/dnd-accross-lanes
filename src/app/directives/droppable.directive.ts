@@ -23,14 +23,14 @@ export class DroppableDirective {
 
   @HostListener('dragenter', ['$event']) onDragEnter(event: DragEvent) {
     event.preventDefault();
-    // event.stopPropagation();
+    event.stopPropagation();
     this.isCurrentDroppable = true;
     this.counter++;
   }
 
   @HostListener('dragleave', ['$event']) onDragLeave(event: DragEvent) {
     event.preventDefault();
-    // event.stopPropagation();
+    event.stopPropagation();
     this.counter--;
     if (this.counter === 0) {
       this.isCurrentDroppable = false;

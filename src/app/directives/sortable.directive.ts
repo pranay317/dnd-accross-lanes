@@ -66,17 +66,13 @@ export class SortableDirective {
       .sort((rectA, rectB) => distance(rectA, currentRect) - distance(rectB, currentRect))
       .filter(rect => rect !== currentRect)
       .some(rect => {
-        // const isHorizontal = rect.top === currentRect.top;
         const isBefore = rect.top < currentRect.top;
 
         const moveBack = isBefore && event.clientY < vCenter(rect);
 
         const moveForward = !isBefore && event.clientY > vCenter(rect);
 
-        console.log(isBefore, event.clientY, vCenter(rect), moveForward, moveBack);
-
         if (moveBack || moveForward) {
-          // debugger;
           this.sort.emit({
             currentIndex: currentIndex,
             newIndex: this.clientRects.indexOf(rect)

@@ -18,7 +18,6 @@ export class CardComponent implements OnInit {
   isEditView = false;
 
   @Output() removeCard: EventEmitter<DraggableDto> = new EventEmitter<DraggableDto>();
-  // @Output() addCard: EventEmitter<LaneCard> = new EventEmitter<LaneCard>();
 
   dto: DraggableDto;
 

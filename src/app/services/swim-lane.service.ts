@@ -50,7 +50,6 @@ export class SwimLaneService {
     const tLaneIndex = this.lanes.findIndex(item => item.name === toLane);
     const cardCurIndex = this.lanes[fLaneIndex].cards.findIndex(item => item.name === card.name);
     this.lanes[fLaneIndex].cards.splice(cardCurIndex, 1);
-    // debugger;
     if (onIndex >= 0) {
       this.lanes[tLaneIndex].cards.splice(onIndex, 0, card);
     } else {
