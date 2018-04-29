@@ -1,0 +1,5 @@
+<div class="home-container d-flex">
+  <div class="lane-container" *ngFor="let lane of lanes">
+    <app-swim-lane (reloadLanes)="reloadLanes($event)" [lane]="lane"></app-swim-lane>
+  </div>
+</div>

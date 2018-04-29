@@ -1,0 +1,23 @@
+<div appDroppable (dropped)="swapItems($event)" [id]="lane.name" [type]="'lane'" class="lane-home">
+  <h5 class="lane-title mb-15">{{lane.display}}</h5>
+  <div class="lane-cards-container">
+    <app-card [lane]="lane.name" [card]="card" *ngFor="let card of lane.cards"></app-card>
+  </div>
+  <div *ngIf="isAddingCard">
+    <form [formGroup]="form" (ngSubmit)="addCard($event)">
+      <input class="form-control mb-15" placeholder="Title..." type="text" formControlName="display" required/>
+      <textarea class="form-control mb-15" placeholder="Description..." formControlName="description"></textarea>
+      <div class="row">
+        <div class="col-6">
+          <button [disabled]="!this.form.valid" type="submit" class="btn btn-primary btn-block">Add</button>
+        </div>
+        <div class="col-6">
+          <button (click)="toggleAddCard($event)" class="btn btn-secondary btn-block">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="!isAddingCard">
+    <button (click)="toggleAddCard($event)" class="btn btn-secondary btn-block">Add Card</button>
+  </div>
+</div>
