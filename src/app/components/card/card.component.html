@@ -2,7 +2,8 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">{{card.display}}</h5>
-      {{card.description}}
+      <div>{{card.description}}</div>
     </div>
+    <div class="card-footer text-right"><i (click)="deleteCard($event)" class="fas fa-trash-alt"></i></div>
   </div>
 </div>

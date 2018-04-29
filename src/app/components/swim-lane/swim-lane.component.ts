@@ -46,4 +46,10 @@ export class SwimLaneComponent implements OnInit {
     });
   }
 
+  removeCard(data: DraggableDto) {
+    this.swimLaneService.deleteCard(data.card, data.fromLane).subscribe(cards => {
+      this.lane.cards = cards;
+    });
+  }
+
 }

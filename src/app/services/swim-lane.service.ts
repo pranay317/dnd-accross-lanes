@@ -58,4 +58,11 @@ export class SwimLaneService {
     return Observable.of(this.lanes);
   }
 
+  deleteCard(card: LaneCard, onLane: string): Observable<LaneCard[]> {
+    const laneIndex = this.lanes.findIndex(item => item.name === onLane);
+    const cardCurIndex = this.lanes[laneIndex].cards.findIndex(item => item.name === card.name);
+    this.lanes[laneIndex].cards.splice(cardCurIndex, 1);
+    return Observable.of(this.lanes[laneIndex].cards);
+  }
+
 }

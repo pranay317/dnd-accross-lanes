@@ -1,7 +1,7 @@
 <div appDroppable (dropped)="swapItems($event)" [id]="lane.name" [type]="'lane'" class="lane-home">
   <h5 class="lane-title mb-15">{{lane.display}}</h5>
   <div class="lane-cards-container">
-    <app-card [lane]="lane.name" [card]="card" *ngFor="let card of lane.cards"></app-card>
+    <app-card (removeCard)="removeCard($event)" [lane]="lane.name" [card]="card" *ngFor="let card of lane.cards"></app-card>
   </div>
   <div *ngIf="isAddingCard">
     <form [formGroup]="form" (ngSubmit)="addCard($event)">
